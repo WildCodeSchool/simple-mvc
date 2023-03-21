@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  web:
+    build: .
+    container_name: ${PROJECT_NAME:-project}-web
+    volumes:
+      - ./:/var/www
+    restart: always
+    networks:
+      - proxy
+    environment:
+      DB_USER: ${USER_NAME}
+      DB_PASSWORD: ${USER_PASSWORD}
+      DB_HOST: ${DATABASE_SUBDOMAIN_NAME}-db
+      DB_NAME: ${DB_NAME}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.${PROJECT_NAME:-project}-secure.entrypoints=websecure"
+      - "traefik.http.routers.${PROJECT_NAME:-project}-secure.rule=Host(`${PROJECT_NAME:-project}.${HOST:-localhost}`)"
+
+networks:
+  proxy:
+    external: true
