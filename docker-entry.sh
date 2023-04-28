@@ -1,4 +1,7 @@
 #!/usr/bin/env sh
+mkdir -p /var/www/public/uploads
+chmod -R 777 /var/www/public/uploads
+
 set -e
 
 composer install \
