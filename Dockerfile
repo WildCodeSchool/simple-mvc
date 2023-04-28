@@ -26,14 +26,6 @@ WORKDIR /var/www
 COPY . /var/www/
 
 COPY --from=composer /composer /usr/bin/composer
-RUN mkdir -p /var/www/public/uploads/
-
-# RUN chown -R www-data:www-data /var/www/
-
-RUN adduser nginx www-data \
-    && chgrp -R www-data /var/www/public/uploads/ \
-    && chmod -R 775 /var/www/public/uploads/
-
 
 EXPOSE 80
 
