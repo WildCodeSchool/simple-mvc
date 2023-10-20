@@ -1,0 +1,37 @@
+version: '3.4'
+
+services:
+    web:
+        ports:
+            - "127.0.0.1:8000:80"
+        environment:
+            DB_USER: user
+            DB_PASSWORD: password
+            DB_HOST: database
+            DB_NAME: simplemvc
+        depends_on:
+            database:
+                condition: service_healthy
+    database:
+        image: mysql/mysql-server:8.0
+        healthcheck:
+            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot", "-prootpassword"] # Command to check health.
+            interval: 5s # Interval between health checks.
+            timeout: 5s # Timeout for each health checking.
+            retries: 20 # Hou many times retries.
+            start_period: 10s
+#        container_name: database
+        volumes:
+            - ./database-setup.sh:/docker-entrypoint-initdb.d/setup.sh
+            - db-data:/var/lib/mysql
+        environment:
+            MYSQL_USER: user
+            MYSQL_PASSWORD: password
+            # Password for root access
+            MYSQL_ROOT_PASSWORD: rootpassword
+        ports:
+            - "3306:3306"
+
+volumes:
+    db-data:
+        name: database
