@@ -27,9 +27,13 @@ define('APP_DB_PASSWORD', 'your_db_password');
 
 ### Windows Users
 
-If you develop on Windows, you should edit you git configuration to change your end of line rules with this command :
+:heavy_exclamation_mark: To do BEFORE CLONING REPOSITORY :heavy_exclamation_mark: :
+
+If you develop on Windows, edit your git configuration to change your end of line rules with this command :
 
 `git config --global core.autocrlf true`
+
+Then clone this Repository safely :white_check_mark:
 
 ## Example
 
