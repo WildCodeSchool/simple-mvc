@@ -1,5 +1,15 @@
 # Simple MVC
 
+## For Windows Users
+
+:heavy_exclamation_mark: To do BEFORE CLONING REPOSITORY :heavy_exclamation_mark: :
+
+If you develop on Windows, edit your git configuration to change your end of line rules with this command :
+
+`git config --global core.autocrlf true`
+
+Then clone this Repository safely :white_check_mark:
+
 ## Description
 
 This repository is a simple PHP MVC structure from scratch.
@@ -24,16 +34,6 @@ define('APP_DB_PASSWORD', 'your_db_password');
 5. Run the internal PHP webserver with `php -S localhost:8000 -t public/`. The option `-t` with `public` as parameter means your localhost will target the `/public` folder.
 6. Go to `localhost:8000` with your favorite browser.
 7. From this starter kit, create your own web application.
-
-### Windows Users
-
-:heavy_exclamation_mark: To do BEFORE CLONING REPOSITORY :heavy_exclamation_mark: :
-
-If you develop on Windows, edit your git configuration to change your end of line rules with this command :
-
-`git config --global core.autocrlf true`
-
-Then clone this Repository safely :white_check_mark:
 
 ## Example
 
